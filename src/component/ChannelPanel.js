@@ -1,15 +1,24 @@
+// @flow
 import * as React from 'react';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
-const ChannelPanel = ({ channels, onClickChannel }) => {
+import ChannelItem from './ChannelItem';
+
+type Channel = {
+    id: number,
+    description: string,
+}
+
+type Props = {
+    channels: Array<Channel>,
+    onClickChannel: (id: number) => Promise<mixed>,
+}
+
+const ChannelPanel = ({ channels, onClickChannel }: Props) => {
     return (
         <List component="nav">
-            {channels.map(({ id, description }) => (
-                <ListItem button component="a" href={`#${id}`} key={id} onClick={() => onClickChannel(id)}>
-                    <ListItemText primary={description} />
-                </ListItem>
+            {channels.map((channel) => (
+                <ChannelItem key={channel.id} channel={channel} onClickChannel={onClickChannel} />
             ))}
         </List>
     )

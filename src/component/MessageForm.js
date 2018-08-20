@@ -1,9 +1,17 @@
+// @flow
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
-const MessageForm = ({ onMessageSubmit, onTextChange, selectedChannel, text }) => {
+type Props = {
+    onMessageSubmit: () => Promise<mixed>,
+    onTextChange: () => void,
+    selectedChannel: number,
+    text: string,
+}
+
+const MessageForm = ({ onMessageSubmit, onTextChange, selectedChannel, text }: Props) => {
     return (
         <form noValidate autoComplete="off">
             <Grid container>

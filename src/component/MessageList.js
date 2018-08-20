@@ -1,9 +1,14 @@
+// @flow
 import * as React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 
-const MessageList = ({ messages }) => {
+type Props = {
+    messages: Array<string>,
+}
+
+const MessageList = ({ messages }: Props) => {
     return (
         <List>
             {messages.map((message, index) => (

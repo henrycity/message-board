@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+// @flow
+import * as React from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 
@@ -7,7 +8,19 @@ import MessageList from "./component/MessageList";
 import MessageForm from "./component/MessageForm";
 import './App.css';
 
-class App extends Component {
+type Channel = {
+    id: number,
+    description: string,
+}
+
+type State = {
+    channels: Array < Channel >,
+    messages: Array < string >,
+    selectedChannel: ?number,
+    text: string,
+}
+
+class App extends React.Component<null, State> {
     state = {
         channels: [],
         messages: [],
@@ -33,7 +46,7 @@ class App extends Component {
         this.setState({text: '', messages: updatedMessages});
     }
 
-    onClickChannel = async (id) => {
+    onClickChannel = async (id: number) => {
         const {data} = await axios.get(`/channels/${id}/messages`);
         this.setState({selectedChannel: id, messages: data});
     }
