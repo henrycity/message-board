@@ -7,5 +7,5 @@
 3. Install the Application with `yarn install`
 4. Run app `yarn start`
 
-####Note
-Instead of getting all messages from one channel through `/messages/<channel>`. I think the endpoint should be `/channels/<channel/messages>` as getting messages should be under `channels` route. And also sending a new message to a channel needs an ID, so my endpoint is `/channels/:channel/message` instead of `/<channel>`.
+### Description
+The application is a message board consists of multiple named channels. Channels contain messages written by users. Users can switch between channels to view these messages and write new messages to the chosen channel. Board is implemented as a single page web application in React and a simple backend in NodeJS.
